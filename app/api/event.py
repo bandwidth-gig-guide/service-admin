@@ -3,7 +3,6 @@ from fastapi import APIRouter, Query
 from typing import Optional
 from uuid import UUID
 from datetime import date
-from app.model.event_brief import EventBrief
 from app.model.event import Event
 
 from app.rest.event.get import get_complete
