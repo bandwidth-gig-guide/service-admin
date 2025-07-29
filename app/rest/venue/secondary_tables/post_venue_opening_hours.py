@@ -20,7 +20,7 @@ def post_venue_opening_hours(hours: Optional[OpeningHours], venue_id: UUID, conn
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """,
             (
-                venue_id,
+                str(venue_id),
                 hours.MonOpen, hours.MonClose,
                 hours.TueOpen, hours.TueClose,
                 hours.WedOpen, hours.WedClose,

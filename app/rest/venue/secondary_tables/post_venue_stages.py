@@ -11,7 +11,7 @@ def post_venue_stages(stages: List[VenueStageInsert], venue_id: UUID, connection
                 INSERT INTO VenueStage (VenueID, Title, Description, Capacity)
                 VALUES (%s, %s, %s, %s)
             """,
-                (venue_id, stage.Title, stage.Description, stage.Capacity),
+                (str(venue_id), stage.Title, stage.Description, stage.Capacity),
                 connection=connection,
                 cursor=cursor
             )

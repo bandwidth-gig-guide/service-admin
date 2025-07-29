@@ -24,7 +24,7 @@ def post_venue_image(imageUrls: Optional[list[HttpUrl]], venue_id: UUID, connect
                 INSERT INTO VenueImage (VenueID, ImageID, DisplayOrder)
                 VALUES (%s, %s, %s)
             """,
-                (venue_id, image_id, index + 1),
+                (str(venue_id), str(image_id), index + 1),
                 connection=connection,
                 cursor=cursor
             )
