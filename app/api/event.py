@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Body, status
 
 from typing import Optional
 from uuid import UUID
@@ -7,6 +7,9 @@ from app.model.event import Event
 
 from app.rest.event.get import get_complete
 from app.rest.event.get_all_id import get_all_id
+# from app.rest.event.post import post
+# from app.rest.event.put import put
+from app.rest.event.delete import delete
 
 
 event = APIRouter()
@@ -36,3 +39,9 @@ def get_all_id_(
         tags=tags,
         dates=dates
     )
+
+
+# DELETE
+@event.delete("/{event_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_(event_id: UUID):
+    return delete(event_id)
