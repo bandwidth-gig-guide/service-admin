@@ -8,6 +8,7 @@ from app.model.artist_insert import ArtistInsert
 from app.rest.artist.get import get_complete
 from app.rest.artist.get_all_id import get_all_id
 from app.rest.artist.post import post
+from app.rest.artist.put import put
 from app.rest.artist.delete import delete
 
 
@@ -42,6 +43,11 @@ def get_all_id_(
 @artist.post("/", response_model=UUID, status_code=status.HTTP_201_CREATED)
 def post_(artist: ArtistInsert = Body(...)):
     return post(artist)
+
+# PUT
+@artist.put("/{artist_id}", status_code=status.HTTP_204_NO_CONTENT)
+def put_(artist_id: UUID, artist: ArtistInsert = Body(...)):
+    return put(artist_id, artist)
 
 # DELETE
 @artist.delete("/{artist_id}", status_code=status.HTTP_204_NO_CONTENT)
