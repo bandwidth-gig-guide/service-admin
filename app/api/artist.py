@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, status
 
 from typing import Optional
 from uuid import UUID
@@ -6,12 +6,13 @@ from app.model.artist import Artist
 
 from app.rest.artist.get import get_complete
 from app.rest.artist.get_all_id import get_all_id
+from app.rest.artist.delete import delete
 
 
 artist = APIRouter()
 
 
-# GET Single Complete
+# GET
 @artist.get("/{artist_id}", response_model=Artist)
 def get_complete_(artist_id: UUID):
     return get_complete(artist_id)
@@ -34,3 +35,8 @@ def get_all_id_(
         tags=tags,
         hasUpcomingPerformance=hasUpcomingPerformance,
     )
+
+# DELETE
+@artist.delete("/{artist_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_(artist_id: UUID):
+    return delete(artist_id)
