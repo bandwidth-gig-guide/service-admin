@@ -3,6 +3,7 @@ from typing import Optional, List
 from uuid import UUID
 from app.model.social import Social
 from app.model.opening_hours import OpeningHours as Hours
+from app.model.venue_stage import VenueStage as Stage
 
 class Venue(BaseModel):
     VenueID: UUID
@@ -23,6 +24,7 @@ class Venue(BaseModel):
     Tags: Optional[List[str]] = None
     OpeningHours: Optional[Hours] = None
     UpcomingEventIDs: Optional[List[UUID]] = None
+    VenueStages: List[Stage]
 
 def format(tuple: tuple) -> Venue:
     return Venue (
@@ -42,5 +44,6 @@ def format(tuple: tuple) -> Venue:
         Types = tuple[13] or [],
         Tags = tuple[14] or [],
         OpeningHours = tuple[15],
-        UpcomingEventIDs = tuple[16] or []
+        UpcomingEventIDs = tuple[16] or [],
+        VenueStages = tuple[17]
     )

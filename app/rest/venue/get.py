@@ -85,7 +85,18 @@ def query():
                 FROM Event
                 WHERE Event.VenueID = Venue.VenueID
                 AND Event.StartDateTime > NOW()
-            ) AS UpcomingEventIDs
+            ) AS UpcomingEventIDs,
+
+            (
+                SELECT json_agg(json_build_object(
+                    'StageID', StageID,
+                    'Title', Title,
+                    'Description', Description,
+                    'Capacity', Capacity
+                ))
+                FROM VenueStage
+                WHERE VenueStage.VenueID = Venue.VenueID
+            ) as VenueStages
 
         FROM Venue
         WHERE Venue.VenueID = %s;
