@@ -1,11 +1,13 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Body, status
 
 from typing import Optional
 from uuid import UUID
 from app.model.venue import Venue
+from app.model.venue_insert import VenueInsert
 
 from app.rest.venue.get import get_complete
 from app.rest.venue.get_all_id import get_all_id
+from app.rest.venue.post import post
 
 
 venue = APIRouter()
@@ -32,3 +34,8 @@ def get_all_id_(
         types=types,
         tags=tags
     )
+
+# POST
+@venue.post("/", response_model=UUID, status_code=status.HTTP_201_CREATED)
+def post_(venue: VenueInsert = Body(...)):
+    return post(venue)
