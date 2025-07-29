@@ -1,9 +1,12 @@
 from app.query.fetch_one import execute
 from app.model.artist import Artist, format
 from uuid import UUID
+from fastapi import HTTPException
 
 def get_complete(artist_id: UUID) -> Artist:
     response = execute(query(), value(artist_id))
+    if response is None:
+        raise HTTPException(status_code=404, detail="Artist not found")
     return format(response)
 
 def query():
