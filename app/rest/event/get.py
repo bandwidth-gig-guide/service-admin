@@ -21,47 +21,12 @@ def query():
                 FROM EventFeatured 
                 WHERE EventID = Event.EventID
             ) AS isFeatured,
-            
+
             (
-                SELECT json_agg(
-                    Image.Url 
-                    ORDER BY 
-                        ImageGroup.priority, 
-                        ImageGroup.artist_position, 
-                        ImageGroup.image_position
-                )
-                FROM (
-                    SELECT 
-                        EventImage.ImageID,
-                        1 AS priority,
-                        NULL AS artist_position,
-                        EventImage.DisplayOrder AS image_position
-                    FROM EventImage
-                    WHERE EventImage.EventID = Event.EventID
-
-                    UNION ALL
-
-                    SELECT 
-                        ArtistImage.ImageID,
-                        2 AS priority,
-                        EventPerformance.SetListPosition AS artist_position,
-                        ArtistImage.DisplayOrder AS image_position
-                    FROM ArtistImage
-                    JOIN EventPerformance ON ArtistImage.ArtistID = EventPerformance.ArtistID
-                    WHERE EventPerformance.EventID = Event.EventID
-
-                    UNION ALL
-
-                    SELECT 
-                        VenueImage.ImageID,
-                        3 AS priority,
-                        NULL AS artist_position,
-                        VenueImage.DisplayOrder AS image_position
-                    FROM VenueImage
-                    WHERE VenueImage.VenueID = Event.VenueID
-                    
-                ) AS ImageGroup
-                JOIN Image ON Image.ImageID = ImageGroup.ImageID
+                SELECT json_agg(Url)
+                FROM Image
+                JOIN EventImage ON EventImage.ImageID = Image.ImageID
+                WHERE EventImage.EventID = Event.EventID
             ) AS ImageUrls,
 
             (
