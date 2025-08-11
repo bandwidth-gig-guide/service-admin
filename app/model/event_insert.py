@@ -1,14 +1,12 @@
 from pydantic import BaseModel, HttpUrl
 from typing import Optional, List
 from datetime import datetime
-from uuid import UUID
 from app.model.event_price import EventPrice
+from app.model.event_venue import EventVenue
 from app.model.event_performance_insert import EventPerformanceInsert
 from app.model.social import Social
 
 class EventInsert(BaseModel):
-    VenueID: UUID
-    StageID: UUID
     Title: str
     Description: str
     StartDateTime: datetime
@@ -19,5 +17,6 @@ class EventInsert(BaseModel):
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None
     Tags: Optional[List[str]] = None
+    Venue: EventVenue
     Performances: List[EventPerformanceInsert]
     Prices: List[EventPrice]

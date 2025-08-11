@@ -46,8 +46,8 @@ def update_event(event_id: UUID, event: EventInsert, connection, cursor) -> None
         WHERE EventID = %s
     """,
         (
-            str(event.VenueID),
-            str(event.StageID),
+            str(event.Venue.VenueID),
+            str(event.Venue.StageID),
             event.Title,
             event.Description,
             event.StartDateTime,

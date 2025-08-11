@@ -47,8 +47,8 @@ def post_event(event: EventInsert, connection, cursor) -> UUID:
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         RETURNING EventID
     """,
-            str(event.VenueID),
-            str(event.StageID),
+            str(event.Venue.VenueID),
+            str(event.Venue.StageID),
             event.Title,
             event.Description,
             event.StartDateTime,
