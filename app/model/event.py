@@ -8,35 +8,35 @@ from app.model.event_performance import EventPerformance
 from app.model.social import Social
 
 class Event(BaseModel):
-    EventID: UUID
-    Title: str
-    StartDateTime: datetime
-    Description: str
-    OriginalPostUrl: HttpUrl
-    TicketSaleUrl: HttpUrl
-    IsFeatured: bool
-    ImageUrls: Optional[List[HttpUrl]] = None
-    Socials: Optional[List[Social]] = None
-    Types: Optional[List[str]] = None
-    Tags: Optional[List[str]] = None
-    Venue: EventVenue
-    Performances: List[EventPerformance]
-    Prices: List[EventPrice]
+    eventId: UUID
+    title: str
+    startDateTime: datetime
+    description: str
+    originalPostUrl: HttpUrl
+    ticketSaleUrl: HttpUrl
+    isFeatured: bool
+    imageUrls: Optional[List[HttpUrl]] = None
+    socials: Optional[List[Social]] = None
+    types: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
+    venue: EventVenue
+    performances: List[EventPerformance]
+    prices: List[EventPrice]
 
 def format(tuple: tuple) -> Event:
     return Event (
-        EventID = tuple[0],
-        Title = tuple[1],
-        StartDateTime = tuple[2],
-        Description = tuple[3],
-        OriginalPostUrl = tuple[4],
-        TicketSaleUrl = tuple[5],
-        IsFeatured = tuple[6],
-        ImageUrls = tuple[7] or [],
-        Socials = tuple[8] or [],
-        Types = tuple[9] or [],
-        Tags = tuple[10] or [],
-        Venue = tuple[11],
-        Performances = tuple[12] or [],
-        Prices = tuple[13] or []
+        eventId = tuple[0],
+        title = tuple[1],
+        startDateTime = tuple[2],
+        description = tuple[3],
+        originalPostUrl = tuple[4],
+        ticketSaleUrl = tuple[5],
+        isFeatured = tuple[6],
+        imageUrls = tuple[7] or [],
+        socials = tuple[8] or [],
+        types = tuple[9] or [],
+        tags = tuple[10] or [],
+        venue = tuple[11],
+        performances = tuple[12] or [],
+        prices = tuple[13] or []
     )

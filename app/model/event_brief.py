@@ -4,23 +4,23 @@ from uuid import UUID
 from datetime import datetime
 
 class EventBrief(BaseModel):
-    EventID: UUID
-    Title: str
-    StartDateTime: datetime
-    VenueTitle: str
-    IsFeatured: bool
-    ImageUrl: Optional[HttpUrl] = None
-    ArtistTitles: List[str]
-    MinPrice: int
+    eventId: UUID
+    title: str
+    startDateTime: datetime
+    venueTitle: str
+    isFeatured: bool
+    imageUrl: Optional[HttpUrl] = None
+    artistTitles: List[str]
+    minPrice: int
 
 def format(tuple: tuple) -> EventBrief:
     return EventBrief (
-        EventID = tuple[0],
-        Title = tuple[1],
-        StartDateTime = tuple[2],
-        VenueTitle = tuple[3],
-        IsFeatured = tuple[4],
-        ImageUrl = tuple[5],
-        ArtistTitles = tuple[6],
-        MinPrice = tuple[7]
+        eventId = tuple[0],
+        title = tuple[1],
+        startDateTime = tuple[2],
+        venueTitle = tuple[3],
+        isFeatured = tuple[4],
+        imageUrl = tuple[5],
+        artistTitles = tuple[6],
+        minPrice = tuple[7]
     )

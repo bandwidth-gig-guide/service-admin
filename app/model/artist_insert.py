@@ -3,15 +3,15 @@ from typing import Optional, List
 from app.model.social_insert import SocialInsert
 
 class ArtistInsert(BaseModel):
-    Title: str
-    Country: str
-    City: str
-    StateCode: str
-    YearFounded: int
-    Description: str
-    SpotifyEmbedURL: Optional[HttpUrl] = None
-    YoutubeEmbedURL: Optional[HttpUrl] = None
-    ImageUrls: Optional[List[HttpUrl]] = None
-    Socials: Optional[List[SocialInsert]] = None
-    Types: Optional[List[str]] = None
-    Tags: Optional[List[str]] = None
+    title: str
+    country: str
+    city: str
+    stateCode: str
+    yearFounded: int
+    description: str
+    spotifyEmbedUrl: Optional[HttpUrl] = None
+    youtubeEmbedUrl: Optional[HttpUrl] = None
+    imageUrls: Optional[List[HttpUrl]] = None
+    socials: Optional[List[SocialInsert]] = None
+    types: Optional[List[str]] = None
+    tags: Optional[List[str]] = None

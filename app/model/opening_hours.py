@@ -2,17 +2,17 @@ from pydantic import BaseModel
 from datetime import time
 
 class OpeningHours(BaseModel):
-    MonOpen: time
-    MonClose: time
-    TueOpen: time
-    TueClose: time
-    WedOpen: time
-    WedClose: time
-    ThurOpen: time
-    ThurClose: time
-    FriOpen: time
-    FriClose: time
-    SatOpen: time
-    SatClose: time
-    SunOpen: time
-    SunClose: time
+    monOpen: time
+    monClose: time
+    tueOpen: time
+    tueClose: time
+    wedOpen: time
+    wedClose: time
+    thurOpen: time
+    thurClose: time
+    friOpen: time
+    friClose: time
+    satOpen: time
+    satClose: time
+    sunOpen: time
+    sunClose: time

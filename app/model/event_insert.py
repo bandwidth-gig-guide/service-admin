@@ -7,16 +7,16 @@ from app.model.event_performance_insert import EventPerformanceInsert
 from app.model.social import Social
 
 class EventInsert(BaseModel):
-    Title: str
-    Description: str
-    StartDateTime: datetime
-    EndDateTime: datetime
-    OriginalPostUrl: HttpUrl
-    TicketSaleUrl: HttpUrl
-    ImageUrls: Optional[List[HttpUrl]] = None
-    Socials: Optional[List[Social]] = None
-    Types: Optional[List[str]] = None
-    Tags: Optional[List[str]] = None
-    Venue: EventVenue
-    Performances: List[EventPerformanceInsert]
-    Prices: List[EventPrice]
+    title: str
+    description: str
+    startDateTime: datetime
+    endDateTime: datetime
+    originalPostUrl: HttpUrl
+    ticketSaleUrl: HttpUrl
+    imageUrls: Optional[List[HttpUrl]] = None
+    socials: Optional[List[Social]] = None
+    types: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
+    venue: EventVenue
+    performances: List[EventPerformanceInsert]
+    prices: List[EventPrice]

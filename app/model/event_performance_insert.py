@@ -3,7 +3,7 @@ from uuid import UUID
 from datetime import datetime
 
 class EventPerformanceInsert(BaseModel):
-    ArtistID: UUID
-    SetListPosition: int
-    StartDateTime: datetime
-    EndDateTime: datetime
+    artistId: UUID
+    setListPosition: int
+    startDateTime: datetime
+    endDateTime: datetime

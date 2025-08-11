@@ -6,18 +6,18 @@ from app.model.opening_hours import OpeningHours as Hours
 
 
 class VenueInsert(BaseModel):
-    Title: str
-    City: str
-    StateCode: str
-    StreetAddress: str
-    PostCode: int
-    Description: str
-    WebsiteUrl: Optional[HttpUrl]
-    PhoneNumber: str
-    GoogleMapsEmbedUrl: HttpUrl
-    ImageUrls: List[HttpUrl] = []
-    Socials: Optional[List[SocialInsert]] = []
-    Types: Optional[List[str]] = []
-    Tags: Optional[List[str]] = []
-    VenueStages: List[Stage]
-    OpeningHours: Optional[Hours] = None
+    title: str
+    city: str
+    stateCode: str
+    streetAddress: str
+    postCode: int
+    description: str
+    websiteUrl: Optional[HttpUrl]
+    phoneNumber: str
+    googleMapsEmbedUrl: HttpUrl
+    imageUrls: List[HttpUrl] = []
+    socials: Optional[List[SocialInsert]] = []
+    types: Optional[List[str]] = []
+    tags: Optional[List[str]] = []
+    venueStages: List[Stage]
+    openingHours: Optional[Hours] = None

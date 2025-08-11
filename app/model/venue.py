@@ -6,44 +6,43 @@ from app.model.opening_hours import OpeningHours as Hours
 from app.model.venue_stage import VenueStage as Stage
 
 class Venue(BaseModel):
-    VenueID: UUID
-    Title: str
-    City: str
-    StateCode: str
-    StreetAddress: str
-    StateCode: str
-    PostCode: int
-    Description: str
-    WebsiteUrl: HttpUrl
-    PhoneNumber: str
-    GoogleMapsEmbedUrl: Optional[HttpUrl] = None
-    IsFeatured: bool
-    ImageUrls: Optional[List[HttpUrl]] = None
-    Socials: Optional[List[Social]] = None
-    Types: Optional[List[str]] = None
-    Tags: Optional[List[str]] = None
-    OpeningHours: Optional[Hours] = None
-    UpcomingEventIDs: Optional[List[UUID]] = None
-    VenueStages: List[Stage]
+    venueId: UUID
+    title: str
+    city: str
+    stateCode: str
+    streetAddress: str
+    postCode: int
+    description: str
+    websiteUrl: HttpUrl
+    phoneNumber: str
+    googleMapsEmbedUrl: Optional[HttpUrl] = None
+    isFeatured: bool
+    imageUrls: Optional[List[HttpUrl]] = None
+    socials: Optional[List[Social]] = None
+    types: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
+    openingHours: Optional[Hours] = None
+    upcomingEventIds: Optional[List[UUID]] = None
+    venueStages: List[Stage]
 
 def format(tuple: tuple) -> Venue:
     return Venue (
-        VenueID = tuple[0],
-        Title = tuple[1],
-        City = tuple[2],
-        StateCode = tuple[3],
-        StreetAddress = tuple[4],
-        PostCode = tuple[5],
-        Description = tuple[6],
-        WebsiteUrl = tuple[7],
-        PhoneNumber = tuple[8],
-        GoogleMapsEmbedUrl = tuple[9],
-        IsFeatured = tuple[10],
-        ImageUrls = tuple[11] or [],
-        Socials = tuple[12] or [],
-        Types = tuple[13] or [],
-        Tags = tuple[14] or [],
-        OpeningHours = tuple[15],
-        UpcomingEventIDs = tuple[16] or [],
-        VenueStages = tuple[17]
+        venueId = tuple[0],
+        title = tuple[1],
+        city = tuple[2],
+        stateCode = tuple[3],
+        streetAddress = tuple[4],
+        postCode = tuple[5],
+        description = tuple[6],
+        websiteUrl = tuple[7],
+        phoneNumber = tuple[8],
+        googleMapsEmbedUrl = tuple[9],
+        isFeatured = tuple[10],
+        imageUrls = tuple[11] or [],
+        socials = tuple[12] or [],
+        types = tuple[13] or [],
+        tags = tuple[14] or [],
+        openingHours = tuple[15],
+        upcomingEventIds = tuple[16] or [],
+        venueStages = tuple[17]
     )

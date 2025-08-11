@@ -4,37 +4,37 @@ from uuid import UUID
 from app.model.social import Social
 
 class Artist(BaseModel):
-    ArtistID: UUID
-    Title: str
-    Country: str
-    City: str
-    StateCode: str
-    YearFounded: int
-    Description: str
-    SpotifyEmbedUrl: Optional[HttpUrl] = None
-    YoutubeEmbedUrl: Optional[HttpUrl] = None
-    IsFeatured: bool
-    ImageUrls: Optional[List[HttpUrl]] = None
-    Socials: Optional[List[Social]] = None
-    Types: Optional[List[str]] = None
-    Tags: Optional[List[str]] = None
-    UpcomingEventIDs: Optional[List[UUID]] = None
+    artistId: UUID
+    title: str
+    country: str
+    city: str
+    stateCode: str
+    yearFounded: int
+    description: str
+    spotifyEmbedUrl: Optional[HttpUrl] = None
+    youtubeEmbedUrl: Optional[HttpUrl] = None
+    isFeatured: bool
+    imageUrls: Optional[List[HttpUrl]] = None
+    socials: Optional[List[Social]] = None
+    types: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
+    upcomingEventIds: Optional[List[UUID]] = None
 
 def format(tuple: tuple) -> Artist:
-    return Artist (
-        ArtistID = tuple[0],
-        Title = tuple[1],
-        Country = tuple[2],
-        City = tuple[3],
-        StateCode = tuple[4],
-        YearFounded = tuple[5],
-        Description = tuple[6],
-        SpotifyEmbedUrl = tuple[7],
-        YoutubeEmbedUrl = tuple[8],
-        IsFeatured = tuple[9],
-        ImageUrls = tuple[10] or [],
-        Socials = tuple[11] or [],
-        Types = tuple[12] or [],
-        Tags = tuple[13] or [],
-        UpcomingEventIDs = tuple[14] or []
+    return Artist(
+        artistId=tuple[0],
+        title=tuple[1],
+        country=tuple[2],
+        city=tuple[3],
+        stateCode=tuple[4],
+        yearFounded=tuple[5],
+        description=tuple[6],
+        spotifyEmbedUrl=tuple[7],
+        youtubeEmbedUrl=tuple[8],
+        isFeatured=tuple[9],
+        imageUrls=tuple[10] or [],
+        socials=tuple[11] or [],
+        types=tuple[12] or [],
+        tags=tuple[13] or [],
+        upcomingEventIds=tuple[14] or []
     )
