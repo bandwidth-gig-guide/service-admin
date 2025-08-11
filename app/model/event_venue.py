@@ -4,5 +4,6 @@ from uuid import UUID
 class EventVenue(BaseModel):
     VenueID: UUID
     Title: str
+    StageID: UUID
     StageTitle: str
     ImageUrl: HttpUrl

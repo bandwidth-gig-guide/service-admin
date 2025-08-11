@@ -55,6 +55,7 @@ def query():
                 SELECT json_build_object(
                     'VenueID', Venue.VenueID,
                     'Title', Venue.Title,
+                    'StageID', VenueStage.StageID,
                     'StageTitle', VenueStage.Title,
                     'ImageUrl', (
                         SELECT Image.Url
