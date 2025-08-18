@@ -19,7 +19,7 @@ def post(artist: ArtistInsert) -> UUID:
                 post_artist_type(artist.Types, artist_id, connection, cursor)
                 post_artist_tag(artist.Tags, artist_id, connection, cursor)
                 post_artist_social(artist.Socials, artist_id, connection, cursor)
-                post_artist_image(artist.ImageUrls, artist_id, connection, cursor)
+                post_artist_image(artist.Images, artist_id, connection, cursor)
                 connection.commit()
                 return artist_id
             except DatabaseError:
