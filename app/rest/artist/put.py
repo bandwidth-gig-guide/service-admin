@@ -5,7 +5,7 @@ from psycopg2 import DatabaseError
 from app.rest.artist.secondary_tables.post_artist_type import post_artist_type
 from app.rest.artist.secondary_tables.post_artist_tag import post_artist_tag
 from app.rest.artist.secondary_tables.post_artist_social import post_artist_social
-from app.rest.artist.secondary_tables.post_artist_image import post_artist_image
+from app.rest.artist.secondary_tables.put_artist_image import put_artist_image
 
 from app.model.artist_insert import ArtistInsert
 from uuid import UUID
