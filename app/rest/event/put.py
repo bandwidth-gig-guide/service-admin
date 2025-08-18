@@ -64,6 +64,5 @@ def delete_related_event_data(event_id: UUID, connection, cursor):
     execute("DELETE FROM EventType WHERE EventID = %s", (str(event_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM EventTag WHERE EventID = %s", (str(event_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM EventSocial WHERE EventID = %s", (str(event_id),), connection=connection, cursor=cursor)
-    execute("DELETE FROM EventImage WHERE EventID = %s", (str(event_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM EventPrice WHERE EventID = %s", (str(event_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM EventPerformance WHERE EventID = %s", (str(event_id),), connection=connection, cursor=cursor)
