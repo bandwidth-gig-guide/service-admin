@@ -29,11 +29,17 @@ def query():
             ) AS isFeatured,
 
             (
-                SELECT json_agg(Image.Url ORDER BY ArtistImage.DisplayOrder ASC)
+                SELECT json_agg(json_build_object(
+                    'ImageID', Image.ImageID,
+                    'Url', Image.Url,
+                    'DisplayOrder', ArtistImage.DisplayOrder
+                ))
                 FROM Image
                 JOIN ArtistImage ON Image.ImageID = ArtistImage.ImageID
                 WHERE ArtistImage.ArtistID = Artist.ArtistID
-            ) AS ImageUrls,
+                GROUP BY ArtistImage.DisplayOrder
+                ORDER BY ArtistImage.DisplayOrder ASC
+            ) AS Images,
 
             (
                 SELECT json_agg(json_build_object(
