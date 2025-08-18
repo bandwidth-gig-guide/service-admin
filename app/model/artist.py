@@ -2,6 +2,7 @@ from pydantic import BaseModel, HttpUrl
 from typing import Optional, List
 from uuid import UUID
 from app.model.social import Social
+from app.model.image import Image
 
 class Artist(BaseModel):
     ArtistID: UUID
@@ -14,7 +15,7 @@ class Artist(BaseModel):
     SpotifyEmbedUrl: Optional[HttpUrl] = None
     YoutubeEmbedUrl: Optional[HttpUrl] = None
     IsFeatured: bool
-    ImageUrls: Optional[List[HttpUrl]] = None
+    Images: Optional[List[Image]] = None
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None
     Tags: Optional[List[str]] = None
@@ -32,7 +33,7 @@ def format(tuple: tuple) -> Artist:
         SpotifyEmbedUrl = tuple[7],
         YoutubeEmbedUrl = tuple[8],
         IsFeatured = tuple[9],
-        ImageUrls = tuple[10] or [],
+        Images = tuple[10] or [],
         Socials = tuple[11] or [],
         Types = tuple[12] or [],
         Tags = tuple[13] or [],
