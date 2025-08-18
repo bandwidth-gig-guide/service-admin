@@ -1,6 +1,7 @@
 from pydantic import BaseModel, HttpUrl
 from typing import Optional, List
 from app.model.social_insert import SocialInsert
+from app.model.image_insert import ImageInsert
 
 class ArtistInsert(BaseModel):
     Title: str
@@ -11,7 +12,7 @@ class ArtistInsert(BaseModel):
     Description: str
     SpotifyEmbedURL: Optional[HttpUrl] = None
     YoutubeEmbedURL: Optional[HttpUrl] = None
-    ImageUrls: Optional[List[HttpUrl]] = None
+    Images: Optional[List[ImageInsert]] = None
     Socials: Optional[List[SocialInsert]] = None
     Types: Optional[List[str]] = None
     Tags: Optional[List[str]] = None

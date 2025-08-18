@@ -2,11 +2,11 @@ from app.query.execute_with_return import execute as execute_with_return
 from app.query.execute import execute
 from uuid import UUID
 from typing import Optional
-from pydantic import HttpUrl
+from app.model.image_insert import ImageInsert
 
-def post_event_image(imageUrls: Optional[list[HttpUrl]], event_id: UUID, connection, cursor):
-    if imageUrls:
-        for index, url in enumerate(imageUrls):
+def post_event_image(images: Optional[list[ImageInsert]], event_id: UUID, connection, cursor):
+    if images:
+        for image in images:
             response = execute_with_return(
             """
                 INSERT INTO Image (Url) 
@@ -14,7 +14,7 @@ def post_event_image(imageUrls: Optional[list[HttpUrl]], event_id: UUID, connect
                 RETURNING ImageID
 
             """,
-                (str(url)),
+                (str(image.Url)),
                 connection=connection,
                 cursor=cursor
             )
@@ -25,7 +25,7 @@ def post_event_image(imageUrls: Optional[list[HttpUrl]], event_id: UUID, connect
                 INSERT INTO EventImage (EventID, ImageID, DisplayOrder)
                 VALUES (%s, %s, %s)
             """,
-                (str(event_id), str(image_id), index + 1),
+                (str(event_id), str(image_id), image.DisplayOrder),
                 connection=connection,
                 cursor=cursor
             )

@@ -21,7 +21,7 @@ def post(venue: VenueInsert) -> UUID:
                 post_venue_type(venue.Types, venue_id, connection, cursor)
                 post_venue_tag(venue.Tags, venue_id, connection, cursor)
                 post_venue_social(venue.Socials, venue_id, connection, cursor)
-                post_venue_image(venue.ImageUrls, venue_id, connection, cursor)
+                post_venue_image(venue.Images, venue_id, connection, cursor)
                 post_venue_stages(venue.VenueStages, venue_id, connection, cursor)
                 post_venue_opening_hours(venue.OpeningHours, venue_id, connection, cursor)
                 connection.commit()

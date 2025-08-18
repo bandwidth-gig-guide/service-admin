@@ -5,6 +5,7 @@ from app.model.event_price import EventPrice
 from app.model.event_venue import EventVenue
 from app.model.event_performance_insert import EventPerformanceInsert
 from app.model.social import Social
+from app.model.image_insert import ImageInsert
 
 class EventInsert(BaseModel):
     Title: str
@@ -13,7 +14,7 @@ class EventInsert(BaseModel):
     EndDateTime: datetime
     OriginalPostUrl: HttpUrl
     TicketSaleUrl: HttpUrl
-    ImageUrls: Optional[List[HttpUrl]] = None
+    Images: Optional[List[ImageInsert]] = None
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None
     Tags: Optional[List[str]] = None

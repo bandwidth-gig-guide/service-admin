@@ -21,7 +21,7 @@ def post(event: EventInsert) -> UUID:
                 post_event_type(event.Types, event_id, connection, cursor)
                 post_event_tag(event.Tags, event_id, connection, cursor)
                 post_event_social(event.Socials, event_id, connection, cursor)
-                post_event_image(event.ImageUrls, event_id, connection, cursor)
+                post_event_image(event.Images, event_id, connection, cursor)
                 post_event_price(event.Prices, event_id, connection, cursor)
                 post_event_performance(event.Performances, event_id, connection, cursor)
                 connection.commit()

@@ -4,6 +4,7 @@ from uuid import UUID
 from app.model.social import Social
 from app.model.opening_hours import OpeningHours as Hours
 from app.model.venue_stage import VenueStage as Stage
+from app.model.image import Image
 
 class Venue(BaseModel):
     VenueID: UUID
@@ -18,7 +19,7 @@ class Venue(BaseModel):
     PhoneNumber: str
     GoogleMapsEmbedUrl: Optional[HttpUrl] = None
     IsFeatured: bool
-    ImageUrls: Optional[List[HttpUrl]] = None
+    Images: Optional[List[Image]] = None
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None
     Tags: Optional[List[str]] = None
