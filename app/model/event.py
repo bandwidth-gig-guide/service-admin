@@ -6,6 +6,7 @@ from app.model.event_price import EventPrice
 from app.model.event_venue import EventVenue
 from app.model.event_performance import EventPerformance
 from app.model.social import Social
+from app.model.image import Image
 
 class Event(BaseModel):
     EventID: UUID
@@ -15,7 +16,7 @@ class Event(BaseModel):
     OriginalPostUrl: HttpUrl
     TicketSaleUrl: HttpUrl
     IsFeatured: bool
-    ImageUrls: Optional[List[HttpUrl]] = None
+    Images: Optional[List[Image]] = None
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None
     Tags: Optional[List[str]] = None
