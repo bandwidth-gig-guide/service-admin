@@ -61,4 +61,3 @@ def delete_related_artist_data(artist_id: UUID, connection, cursor):
     execute("DELETE FROM ArtistType WHERE ArtistID = %s", (str(artist_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM ArtistTag WHERE ArtistID = %s", (str(artist_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM ArtistSocial WHERE ArtistID = %s", (str(artist_id),), connection=connection, cursor=cursor)
-    execute("DELETE FROM ArtistImage WHERE ArtistID = %s", (str(artist_id),), connection=connection, cursor=cursor)
