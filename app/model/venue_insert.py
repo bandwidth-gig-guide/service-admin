@@ -3,6 +3,7 @@ from typing import List, Optional
 from app.model.social_insert import SocialInsert
 from app.model.venue_stage_insert import VenueStageInsert as Stage
 from app.model.opening_hours import OpeningHours as Hours
+from app.model.image_insert import ImageInsert
 
 
 class VenueInsert(BaseModel):
@@ -15,7 +16,7 @@ class VenueInsert(BaseModel):
     WebsiteUrl: Optional[HttpUrl]
     PhoneNumber: str
     GoogleMapsEmbedUrl: HttpUrl
-    ImageUrls: List[HttpUrl] = []
+    Images: List[ImageInsert] = []
     Socials: Optional[List[SocialInsert]] = []
     Types: Optional[List[str]] = []
     Tags: Optional[List[str]] = []

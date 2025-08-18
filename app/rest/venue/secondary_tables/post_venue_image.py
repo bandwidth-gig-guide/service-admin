@@ -2,18 +2,18 @@ from app.query.execute_with_return import execute as execute_with_return
 from app.query.execute import execute
 from uuid import UUID
 from typing import Optional
-from pydantic import  HttpUrl
+from app.model.image_insert import ImageInsert
 
-def post_venue_image(imageUrls: Optional[list[HttpUrl]], venue_id: UUID, connection, cursor):
-    if imageUrls:
-        for index, url in enumerate(imageUrls):
+def post_venue_image(images: Optional[list[ImageInsert]], venue_id: UUID, connection, cursor):
+    if images:
+        for image in images:
             response = execute_with_return(
             """
                 INSERT INTO Image (Url) 
                 VALUES (%s)
                 RETURNING ImageID
             """,
-                (str(url)),
+                (str(image.Url)),
                 connection=connection,
                 cursor=cursor
             )
@@ -24,7 +24,7 @@ def post_venue_image(imageUrls: Optional[list[HttpUrl]], venue_id: UUID, connect
                 INSERT INTO VenueImage (VenueID, ImageID, DisplayOrder)
                 VALUES (%s, %s, %s)
             """,
-                (str(venue_id), str(image_id), index + 1),
+                (str(venue_id), str(image_id), image.DisplayOrder),
                 connection=connection,
                 cursor=cursor
             )
