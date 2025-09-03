@@ -6,4 +6,3 @@ class EventPerformanceInsert(BaseModel):
     ArtistID: UUID
     SetListPosition: int
     StartDateTime: datetime
-    EndDateTime: datetime

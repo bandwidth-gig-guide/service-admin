@@ -40,7 +40,6 @@ def update_event(event_id: UUID, event: EventInsert, connection, cursor) -> None
             Title = %s,
             Description = %s,
             StartDateTime = %s,
-            EndDateTime = %s,
             OriginalPostURL = %s,
             TicketSaleURL = %s
         WHERE EventID = %s
@@ -51,7 +50,6 @@ def update_event(event_id: UUID, event: EventInsert, connection, cursor) -> None
             event.Title,
             event.Description,
             event.StartDateTime,
-            event.EndDateTime,
             str(event.OriginalPostUrl),
             str(event.TicketSaleUrl),
             str(event_id)
