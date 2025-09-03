@@ -12,8 +12,7 @@ def post_event_performance(performances: List[EventPerformanceInsert], event_id:
                     EventID, 
                     ArtistID, 
                     SetListPosition,
-                    StartDateTime,
-                    EndDateTime
+                    StartDateTime
                 )
                 VALUES (%s, %s, %s, %s, %s)
             """,
@@ -21,8 +20,7 @@ def post_event_performance(performances: List[EventPerformanceInsert], event_id:
                     str(event_id), 
                     str(performance.ArtistID),
                     performance.SetListPosition,
-                    performance.StartDateTime,
-                    performance.EndDateTime
+                    performance.StartDateTime
                 ),
                 connection=connection,
                 cursor=cursor
