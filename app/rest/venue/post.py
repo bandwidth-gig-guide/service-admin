@@ -54,9 +54,9 @@ def post_venue(venue: VenueInsert, connection, cursor) -> UUID:
         venue.StateCode,
         venue.PostCode,
         venue.Description,
-        str(venue.WebsiteUrl) if venue.WebsiteUrl else None,
+        str(venue.WebsiteURL) if venue.WebsiteURL else None,
         venue.PhoneNumber,
-        str(venue.GoogleMapsEmbedUrl),
+        str(venue.GoogleMapsEmbedURL),
         connection=connection,
         cursor=cursor
     )

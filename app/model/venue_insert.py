@@ -13,9 +13,9 @@ class VenueInsert(BaseModel):
     StreetAddress: str
     PostCode: int
     Description: str
-    WebsiteUrl: Optional[HttpUrl]
+    WebsiteURL: Optional[HttpUrl]
     PhoneNumber: str
-    GoogleMapsEmbedUrl: HttpUrl
+    GoogleMapsEmbedURL: HttpUrl
     Images: List[ImageInsert] = []
     Socials: Optional[List[SocialInsert]] = []
     Types: Optional[List[str]] = []
