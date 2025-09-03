@@ -10,7 +10,7 @@ def post_venue_tag(tags: Optional[List[str]], venue_id: UUID, connection, cursor
                 INSERT INTO VenueTag (VenueID, Tag)
                 VALUES (%s, %s)
             """,
-                (venue_id, tag),
+                (str(venue_id), tag),
                 connection=connection,
                 cursor=cursor
             )

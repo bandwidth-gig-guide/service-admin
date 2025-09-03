@@ -10,7 +10,7 @@ def post_venue_type(types: Optional[List[str]], venue_id: UUID, connection, curs
                 INSERT INTO VenueType (VenueID, Type) 
                 VALUES (%s, %s)
             """,
-                (venue_id, type_),
+                (str(venue_id), type_),
                 connection=connection,
                 cursor=cursor
             )
