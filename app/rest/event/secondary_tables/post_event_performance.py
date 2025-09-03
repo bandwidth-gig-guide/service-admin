@@ -14,7 +14,7 @@ def post_event_performance(performances: List[EventPerformanceInsert], event_id:
                     SetListPosition,
                     StartDateTime
                 )
-                VALUES (%s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s)
             """,
                 (
                     str(event_id), 
