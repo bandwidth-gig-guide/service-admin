@@ -50,8 +50,8 @@ def update_event(event_id: UUID, event: EventInsert, connection, cursor) -> None
             event.Title,
             event.Description,
             event.StartDateTime,
-            str(event.OriginalPostUrl),
-            str(event.TicketSaleUrl),
+            str(event.OriginalPostURL),
+            str(event.TicketSaleURL),
             str(event_id)
         ),
         connection=connection,

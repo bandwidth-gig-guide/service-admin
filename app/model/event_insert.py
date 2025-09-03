@@ -11,8 +11,8 @@ class EventInsert(BaseModel):
     Title: str
     Description: str
     StartDateTime: datetime
-    OriginalPostUrl: HttpUrl
-    TicketSaleUrl: HttpUrl
+    OriginalPostURL: HttpUrl
+    TicketSaleURL: HttpUrl
     Images: Optional[List[ImageInsert]] = None
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None
