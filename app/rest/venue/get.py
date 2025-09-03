@@ -31,12 +31,10 @@ def query():
                     'ImageID', Image.ImageID,
                     'Url', Image.Url,
                     'DisplayOrder', VenueImage.DisplayOrder
-                ))
+                ) ORDER BY VenueImage.DisplayOrder )
                 FROM Image
                 JOIN VenueImage ON Image.ImageID = VenueImage.ImageID
                 WHERE VenueImage.VenueID = Venue.VenueID
-                GROUP BY VenueImage.DisplayOrder
-                ORDER BY VenueImage.DisplayOrder ASC
             ) AS Images,
 
             (

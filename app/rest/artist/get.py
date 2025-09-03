@@ -33,12 +33,10 @@ def query():
                     'ImageID', Image.ImageID,
                     'Url', Image.Url,
                     'DisplayOrder', ArtistImage.DisplayOrder
-                ))
+                ) ORDER BY ArtistImage.DisplayOrder )
                 FROM Image
                 JOIN ArtistImage ON Image.ImageID = ArtistImage.ImageID
                 WHERE ArtistImage.ArtistID = Artist.ArtistID
-                GROUP BY ArtistImage.DisplayOrder
-                ORDER BY ArtistImage.DisplayOrder ASC
             ) AS Images,
 
             (
