@@ -1,9 +1,9 @@
 from pydantic import BaseModel, HttpUrl
 from uuid import UUID
 
-class EventVenue(BaseModel):
+class EventVenueInsert(BaseModel):
     VenueID: UUID
     Title: str
     StageID: UUID
     StageTitle: str
-    ImageUrl: HttpUrl
+    ImageURL: HttpUrl
