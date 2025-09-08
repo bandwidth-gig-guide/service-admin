@@ -7,6 +7,7 @@ from app.model.venue_insert import VenueInsert
 
 from app.rest.venue.get import get_complete
 from app.rest.venue.get_all_id import get_all_id
+from app.rest.venue.get_all_id_and_title import get_all_id_and_title
 from app.rest.venue.post import post
 from app.rest.venue.put import put
 from app.rest.venue.delete import delete
@@ -14,6 +15,11 @@ from app.rest.venue.delete import delete
 
 venue = APIRouter()
 
+
+# GET IDs and Title
+@venue.get("/id-and-title", response_model=list[dict])
+def get_all_id_and_title_():
+    return get_all_id_and_title()
 
 # GET
 @venue.get("/{venue_id}", response_model=Venue)
