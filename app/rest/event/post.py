@@ -43,7 +43,7 @@ def post_event(event: EventInsert, connection, cursor) -> UUID:
             OriginalPostURL,
             TicketSaleURL
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s)
         RETURNING EventID
     """,
             str(event.Venue.VenueID),
