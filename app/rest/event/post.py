@@ -51,8 +51,8 @@ def post_event(event: EventInsert, connection, cursor) -> UUID:
             event.Title,
             event.Description,
             event.StartDateTime,
-            str(event.OriginalPostUrl),
-            str(event.TicketSaleUrl),       
+            str(event.OriginalPostURL),
+            str(event.TicketSaleURL),       
             connection=connection,
             cursor=cursor
     )
