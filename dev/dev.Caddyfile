@@ -1,0 +1,9 @@
+{
+	storage file_system /data
+}
+
+localhost {
+    handle_path /api/* {
+        reverse_proxy service-admin:80
+    }
+}
