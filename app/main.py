@@ -14,15 +14,15 @@ from app.core.handle.http_exception import handle_http_exception
 app = FastAPI()
 
 # Routes
-app.include_router(artist, prefix="/admin/artist", tags=["artist"])
-app.include_router(event, prefix="/admin/event", tags=["event"])
-app.include_router(venue, prefix="/admin/venue", tags=["venue"])
+app.include_router(artist, prefix="/artist", tags=["artist"])
+app.include_router(event, prefix="/event", tags=["event"])
+app.include_router(venue, prefix="/venue", tags=["venue"])
 
 # Handlers
 app.add_exception_handler(Exception, handle_exception)
 app.add_exception_handler(HTTPException, handle_http_exception)
 
-
+# Events
 @app.on_event("startup")
 def on_startup():
     test_db_connection()
