@@ -3,7 +3,7 @@
 }
 
 localhost {
-    handle_path /api/* {
+    handle_path /* {
         reverse_proxy service-admin:80
     }
 }
