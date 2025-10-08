@@ -19,12 +19,7 @@ def query():
             Venue.WebsiteUrl,
             Venue.PhoneNumber,
             Venue.GoogleMapsEmbedURL AS GoogleMapsEmbedUrl,
-
-            EXISTS(
-                SELECT 1 
-                FROM VenueFeatured 
-                WHERE VenueID = Venue.VenueID
-            ) AS isFeatured,
+            Venue.IsFeatured,
 
             (
                 SELECT json_agg(json_build_object(
