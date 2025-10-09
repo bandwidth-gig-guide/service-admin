@@ -68,4 +68,3 @@ def delete_related_venue_data(venue_id: UUID, connection, cursor):
     execute("DELETE FROM VenueSocial WHERE VenueID = %s", (str(venue_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM VenueOpeningHours WHERE VenueID = %s", (str(venue_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM VenueStage WHERE VenueID = %s", (str(venue_id),), connection=connection, cursor=cursor)
-    execute("DELETE FROM Image WHERE ImageID IN (SELECT VenueImage.ImageID FROM VenueImage WHERE VenueImage.VenueID = %s)", (str(venue_id),), connection=connection, cursor=cursor)
