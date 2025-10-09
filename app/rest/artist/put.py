@@ -4,7 +4,7 @@ from psycopg2 import DatabaseError
 
 from app.rest.artist.secondary_tables.put_artist_type import put_artist_type
 from app.rest.artist.secondary_tables.put_artist_tag import put_artist_tag
-from app.rest.artist.secondary_tables.post_artist_social import post_artist_social
+from app.rest.artist.secondary_tables.put_artist_social import put_artist_social
 from app.rest.artist.secondary_tables.put_artist_image import put_artist_image
 
 from app.model.artist_insert import ArtistInsert
@@ -16,10 +16,9 @@ def put(artist_id: UUID, artist: ArtistInsert):
         with connection.cursor() as cursor:
             try:
                 update_artist(artist_id, artist, connection, cursor)
-                delete_related_artist_data(artist_id, connection, cursor)
                 put_artist_type(artist.Types, artist_id, connection, cursor)
                 put_artist_tag(artist.Tags, artist_id, connection, cursor)
-                post_artist_social(artist.Socials, artist_id, connection, cursor)
+                put_artist_social(artist.Socials, artist_id, connection, cursor)
                 put_artist_image(artist.Images, artist_id, connection, cursor)
                 connection.commit()
                 return artist_id
@@ -56,6 +55,3 @@ def update_artist(artist_id: UUID, artist: ArtistInsert, connection, cursor):
         connection=connection,
         cursor=cursor
     )
-
-def delete_related_artist_data(artist_id: UUID, connection, cursor):
-    execute("DELETE FROM ArtistSocial WHERE ArtistID = %s", (str(artist_id),), connection=connection, cursor=cursor)
