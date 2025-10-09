@@ -4,7 +4,7 @@ from uuid import UUID
 from typing import Optional, List
 
 def put_event_social(socials: Optional[List[str]], event_id: UUID, connection, cursor):
-    execute(delete_existing_socials(), str(event_id), connection, cursor)
+    execute(delete_existing_socials(), (str(event_id),), connection, cursor)
     post_event_social(socials, event_id, connection, cursor)
                 
 

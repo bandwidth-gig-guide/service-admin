@@ -4,7 +4,7 @@ from uuid import UUID
 from typing import Optional, List
 
 def put_artist_tag(tags: Optional[List[str]], artist_id: UUID, connection, cursor):
-    execute(delete_existing_tags(), str(artist_id), connection, cursor)
+    execute(delete_existing_tags(), (str(artist_id),), connection, cursor)
     post_artist_tag(tags, artist_id, connection, cursor)
                 
 

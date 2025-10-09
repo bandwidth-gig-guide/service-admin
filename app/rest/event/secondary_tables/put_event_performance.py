@@ -5,7 +5,7 @@ from uuid import UUID
 from typing import List
 
 def put_event_performance(performances: List[EventPerformanceInsert], event_id: UUID, connection, cursor):
-    execute(delete_existing_performances(), str(event_id), connection, cursor)
+    execute(delete_existing_performances(), (str(event_id),), connection, cursor)
     post_event_performance(performances, event_id, connection, cursor)
                 
 

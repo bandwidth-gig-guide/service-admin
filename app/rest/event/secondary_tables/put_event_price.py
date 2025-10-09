@@ -5,7 +5,7 @@ from uuid import UUID
 from typing import List
 
 def put_event_price(prices: List[EventPrice], event_id: UUID, connection, cursor):
-    execute(delete_existing_prices(), str(event_id), connection, cursor)
+    execute(delete_existing_prices(), (str(event_id),), connection, cursor)
     post_event_price(prices, event_id, connection, cursor)
                 
 

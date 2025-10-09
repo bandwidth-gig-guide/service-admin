@@ -4,7 +4,7 @@ from uuid import UUID
 from typing import Optional, List
 
 def put_venue_tag(tags: Optional[List[str]], venue_id: UUID, connection, cursor):
-    execute(delete_existing_tags(), str(venue_id), connection, cursor)
+    execute(delete_existing_tags(), (str(venue_id),), connection, cursor)
     post_venue_tag(tags, venue_id, connection, cursor)
                 
 

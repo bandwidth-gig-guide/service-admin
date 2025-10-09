@@ -4,7 +4,7 @@ from uuid import UUID
 from typing import Optional, List
 
 def put_event_tag(tags: Optional[List[str]], event_id: UUID, connection, cursor):
-    execute(delete_existing_tags(), str(event_id), connection, cursor)
+    execute(delete_existing_tags(), (str(event_id),), connection, cursor)
     post_event_tag(tags, event_id, connection, cursor)
                 
 
