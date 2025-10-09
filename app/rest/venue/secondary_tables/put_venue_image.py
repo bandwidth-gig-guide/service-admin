@@ -5,7 +5,7 @@ from typing import Optional
 from app.model.image_insert import ImageInsert
 
 def put_venue_image(images: Optional[list[ImageInsert]], venue_id: UUID, connection, cursor):
-    execute(delete_existing_images(), str(venue_id), connection, cursor)
+    execute(delete_existing_images(), (str(venue_id),), connection, cursor)
     post_venue_image(images, venue_id, connection, cursor)
                 
 

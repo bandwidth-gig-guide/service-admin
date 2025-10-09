@@ -4,7 +4,7 @@ from uuid import UUID
 from typing import Optional, List
 
 def put_venue_type(types: Optional[List[str]], venue_id: UUID, connection, cursor):
-    execute(delete_existing_types(), str(venue_id), connection, cursor)
+    execute(delete_existing_types(), (str(venue_id),), connection, cursor)
     post_venue_type(types, venue_id, connection, cursor)
                 
 

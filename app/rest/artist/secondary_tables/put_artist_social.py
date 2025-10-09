@@ -4,7 +4,7 @@ from uuid import UUID
 from typing import Optional, List
 
 def put_artist_social(socials: Optional[List[str]], artist_id: UUID, connection, cursor):
-    execute(delete_existing_socials(), str(artist_id), connection, cursor)
+    execute(delete_existing_socials(), (str(artist_id),), connection, cursor)
     post_artist_social(socials, artist_id, connection, cursor)
                 
 
