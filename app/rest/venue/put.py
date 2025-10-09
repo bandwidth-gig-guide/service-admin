@@ -6,7 +6,7 @@ from app.rest.venue.secondary_tables.put_venue_type import put_venue_type
 from app.rest.venue.secondary_tables.put_venue_tag import put_venue_tag
 from app.rest.venue.secondary_tables.put_venue_social import put_venue_social
 from app.rest.venue.secondary_tables.put_venue_image import put_venue_image
-from app.rest.venue.secondary_tables.post_venue_stages import post_venue_stages
+from app.rest.venue.secondary_tables.post_venue_stage import post_venue_stage
 from app.rest.venue.secondary_tables.post_venue_opening_hours import post_venue_opening_hours
 
 from app.model.venue_insert import VenueInsert
@@ -23,7 +23,7 @@ def put(venue_id: UUID, venue: VenueInsert) -> None:
                 put_venue_tag(venue.Tags, venue_id, connection, cursor)
                 put_venue_social(venue.Socials, venue_id, connection, cursor)
                 put_venue_image(venue.Images, venue_id, connection, cursor)
-                post_venue_stages(venue.VenueStages, venue_id, connection, cursor)
+                post_venue_stage(venue.VenueStages, venue_id, connection, cursor)
                 post_venue_opening_hours(venue.OpeningHours, venue_id, connection, cursor)
                 connection.commit()
             except DatabaseError:
