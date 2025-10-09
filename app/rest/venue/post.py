@@ -6,7 +6,7 @@ from app.rest.venue.secondary_tables.post_venue_type import post_venue_type
 from app.rest.venue.secondary_tables.post_venue_tag import post_venue_tag
 from app.rest.venue.secondary_tables.post_venue_social import post_venue_social
 from app.rest.venue.secondary_tables.post_venue_image import post_venue_image
-from app.rest.venue.secondary_tables.post_venue_stages import post_venue_stages
+from app.rest.venue.secondary_tables.post_venue_stage import post_venue_stage
 from app.rest.venue.secondary_tables.post_venue_opening_hours import post_venue_opening_hours
 
 from app.model.venue_insert import VenueInsert
@@ -22,7 +22,7 @@ def post(venue: VenueInsert) -> UUID:
                 post_venue_tag(venue.Tags, venue_id, connection, cursor)
                 post_venue_social(venue.Socials, venue_id, connection, cursor)
                 post_venue_image(venue.Images, venue_id, connection, cursor)
-                post_venue_stages(venue.VenueStages, venue_id, connection, cursor)
+                post_venue_stage(venue.VenueStages, venue_id, connection, cursor)
                 post_venue_opening_hours(venue.OpeningHours, venue_id, connection, cursor)
                 connection.commit()
                 return venue_id

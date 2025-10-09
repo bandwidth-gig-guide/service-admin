@@ -7,25 +7,33 @@ from app.model.image_insert import ImageInsert
 def post_event_image(images: Optional[list[ImageInsert]], event_id: UUID, connection, cursor):
     if images:
         for image in images:
-            response = execute_with_return(
-            """
-                INSERT INTO Image (Url) 
-                VALUES (%s)
-                RETURNING ImageID
+            response = execute_with_return(insert_image(), value_image(image), connection, cursor)
+            execute(insert_event_image(), value_event_image(event_id, response, image), connection, cursor)
+            
 
-            """,
-                (str(image.Url)),
-                connection=connection,
-                cursor=cursor
-            )
-            image_id: UUID = response[0]
+# Image Table
+def insert_image():
+    return """
+        INSERT INTO Image (Url) 
+        VALUES (%s)
+        RETURNING ImageID
+    """
 
-            execute(
-            """
-                INSERT INTO EventImage (EventID, ImageID, DisplayOrder)
-                VALUES (%s, %s, %s)
-            """,
-                (str(event_id), str(image_id), image.DisplayOrder),
-                connection=connection,
-                cursor=cursor
-            )
+def value_image(image: ImageInsert):
+    return (str(image.Url),)
+
+
+# EventImage Table
+def insert_event_image():
+    return """
+        INSERT INTO EventImage (EventID, ImageID, DisplayOrder)
+        VALUES (%s, %s, %s)
+    """
+
+def value_event_image(event_id: UUID, response: tuple, image: ImageInsert):
+    return (
+        str(event_id),
+        str(response[0]),
+        image.DisplayOrder
+    )
+        

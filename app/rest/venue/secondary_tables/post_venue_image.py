@@ -7,24 +7,33 @@ from app.model.image_insert import ImageInsert
 def post_venue_image(images: Optional[list[ImageInsert]], venue_id: UUID, connection, cursor):
     if images:
         for image in images:
-            response = execute_with_return(
-            """
-                INSERT INTO Image (Url) 
-                VALUES (%s)
-                RETURNING ImageID
-            """,
-                (str(image.Url)),
-                connection=connection,
-                cursor=cursor
-            )
-            image_id: UUID = response[0]
+            response = execute_with_return(insert_image(), value_image(image), connection, cursor)
+            execute(insert_venue_image(), value_venue_image(venue_id, response, image), connection, cursor)
+            
 
-            execute(
-            """
-                INSERT INTO VenueImage (VenueID, ImageID, DisplayOrder)
-                VALUES (%s, %s, %s)
-            """,
-                (str(venue_id), str(image_id), image.DisplayOrder),
-                connection=connection,
-                cursor=cursor
-            )
+# Image Table
+def insert_image():
+    return """
+        INSERT INTO Image (Url) 
+        VALUES (%s)
+        RETURNING ImageID
+    """
+
+def value_image(image: ImageInsert):
+    return (str(image.Url),)
+
+
+# VenueImage Table
+def insert_venue_image():
+    return """
+        INSERT INTO VenueImage (VenueID, ImageID, DisplayOrder)
+        VALUES (%s, %s, %s)
+    """
+
+def value_venue_image(venue_id: UUID, response: tuple, image: ImageInsert):
+    return (
+        str(venue_id),
+        str(response[0]),
+        image.DisplayOrder
+    )
+        

@@ -3,7 +3,7 @@ from app.model.venue_stage_insert import VenueStageInsert
 from uuid import UUID
 from typing import List
 
-def post_venue_stages(stages: List[VenueStageInsert], venue_id: UUID, connection, cursor):
+def post_venue_stage(stages: List[VenueStageInsert], venue_id: UUID, connection, cursor):
     if stages:
         for stage in stages:
             execute(
