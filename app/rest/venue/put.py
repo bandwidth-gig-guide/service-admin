@@ -7,7 +7,7 @@ from app.rest.venue.secondary_tables.put_venue_tag import put_venue_tag
 from app.rest.venue.secondary_tables.put_venue_social import put_venue_social
 from app.rest.venue.secondary_tables.put_venue_image import put_venue_image
 from app.rest.venue.secondary_tables.post_venue_stage import post_venue_stage
-from app.rest.venue.secondary_tables.post_venue_opening_hours import post_venue_opening_hours
+from app.rest.venue.secondary_tables.put_venue_opening_hours import put_venue_opening_hours
 
 from app.model.venue_insert import VenueInsert
 from uuid import UUID
@@ -24,7 +24,7 @@ def put(venue_id: UUID, venue: VenueInsert) -> None:
                 put_venue_social(venue.Socials, venue_id, connection, cursor)
                 put_venue_image(venue.Images, venue_id, connection, cursor)
                 post_venue_stage(venue.VenueStages, venue_id, connection, cursor)
-                post_venue_opening_hours(venue.OpeningHours, venue_id, connection, cursor)
+                put_venue_opening_hours(venue.OpeningHours, venue_id, connection, cursor)
                 connection.commit()
             except DatabaseError:
                 connection.rollback()
@@ -63,5 +63,4 @@ def update_venue(venue_id: UUID, venue: VenueInsert, connection, cursor) -> None
     )
 
 def delete_related_venue_data(venue_id: UUID, connection, cursor):
-    execute("DELETE FROM VenueOpeningHours WHERE VenueID = %s", (str(venue_id),), connection=connection, cursor=cursor)
     execute("DELETE FROM VenueStage WHERE VenueID = %s", (str(venue_id),), connection=connection, cursor=cursor)
