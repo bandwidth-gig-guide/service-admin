@@ -1,6 +1,6 @@
 from app.db.connection import get_db_connection
 
-def execute(query: str, *values, connection=None, cursor=None):
+def execute(query: str, values: tuple = (), connection=None, cursor=None):
     if connection and cursor:
         cursor.execute(query, values)
         result = cursor.fetchone()
