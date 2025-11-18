@@ -43,14 +43,16 @@ def post_artist(artist: ArtistInsert, connection, cursor) -> UUID:
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         RETURNING ArtistID
     """,
-        artist.Title,
-        artist.Country,
-        artist.City,
-        artist.StateCode,
-        artist.YearFounded,
-        artist.Description,
-        str(artist.SpotifyEmbedURL) if artist.SpotifyEmbedURL else None,
-        str(artist.YoutubeEmbedURL) if artist.YoutubeEmbedURL else None,
+        (
+            artist.Title,
+            artist.Country,
+            artist.City,
+            artist.StateCode,
+            artist.YearFounded,
+            artist.Description,
+            str(artist.SpotifyEmbedURL) if artist.SpotifyEmbedURL else None,
+            str(artist.YoutubeEmbedURL) if artist.YoutubeEmbedURL else None,
+        ),
         connection=connection,
         cursor=cursor
     )
