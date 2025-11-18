@@ -27,7 +27,7 @@ def update_updated_stage():
     return """
         UPDATE VenueStage
         SET Title = %s, Description = %s, Capacity = %s
-        WHERE VenueStageID = %s
+        WHERE StageID = %s
     """
 
 def value_updated_stage(stage: VenueStageInsert):
@@ -35,5 +35,5 @@ def value_updated_stage(stage: VenueStageInsert):
         stage.Title,
         stage.Description,
         stage.Capacity,
-        stage.StageID
+        str(stage.StageID)
     )
