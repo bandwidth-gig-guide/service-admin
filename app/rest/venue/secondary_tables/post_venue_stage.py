@@ -8,10 +8,10 @@ def post_venue_stage(stages: List[VenueStageInsert], venue_id: UUID, connection,
         for stage in stages:
             execute(
             """
-                INSERT INTO VenueStage (VenueID, Title, Description, Capacity)
-                VALUES (%s, %s, %s, %s)
+                INSERT INTO VenueStage (Title, Description, Capacity)
+                VALUES (%s, %s, %s)
             """,
-                (str(venue_id), stage.Title, stage.Description, stage.Capacity),
+                (stage.Title, stage.Description, stage.Capacity),
                 connection=connection,
                 cursor=cursor
             )
