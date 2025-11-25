@@ -20,6 +20,7 @@ def query():
             Venue.PhoneNumber,
             Venue.GoogleMapsEmbedURL AS GoogleMapsEmbedUrl,
             Venue.IsFeatured,
+            Venue.IsMonitored,
 
             (
                 SELECT json_agg(json_build_object(

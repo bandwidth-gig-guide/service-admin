@@ -43,9 +43,11 @@ def post_venue(venue: VenueInsert, connection, cursor) -> UUID:
             Description,
             WebsiteURL,
             PhoneNumber,
-            GoogleMapsEmbedURL
+            GoogleMapsEmbedURL,
+            IsFeatured,
+            IsMonitored
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         RETURNING VenueID
     """,
         (
@@ -58,6 +60,8 @@ def post_venue(venue: VenueInsert, connection, cursor) -> UUID:
             str(venue.WebsiteURL) if venue.WebsiteURL else None,
             venue.PhoneNumber,
             str(venue.GoogleMapsEmbedURL),
+            venue.IsFeatured,
+            venue.IsMonitored
         ),
         connection=connection,
         cursor=cursor

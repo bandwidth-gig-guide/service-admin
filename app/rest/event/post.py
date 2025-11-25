@@ -41,9 +41,10 @@ def post_event(event: EventInsert, connection, cursor) -> UUID:
             Description,
             StartDateTime,
             OriginalPostURL,
-            TicketSaleURL
+            TicketSaleURL,
+            IsFeatured
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         RETURNING EventID
     """,
         (
@@ -54,6 +55,7 @@ def post_event(event: EventInsert, connection, cursor) -> UUID:
             event.StartDateTime,
             str(event.OriginalPostURL),
             str(event.TicketSaleURL),
+            event.IsFeatured
         ),       
         connection=connection,
         cursor=cursor
