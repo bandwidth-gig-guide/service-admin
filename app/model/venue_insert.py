@@ -16,6 +16,7 @@ class VenueInsert(BaseModel):
     WebsiteURL: Optional[HttpUrl]
     PhoneNumber: str
     GoogleMapsEmbedURL: HttpUrl
+    IsFeatured: bool
     Images: List[ImageInsert] = []
     Socials: Optional[List[SocialInsert]] = []
     Types: Optional[List[str]] = []
