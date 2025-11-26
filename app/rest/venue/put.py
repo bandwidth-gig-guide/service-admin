@@ -41,7 +41,9 @@ def update_venue(venue_id: UUID, venue: VenueInsert, connection, cursor) -> None
             Description = %s,
             WebsiteURL = %s,
             PhoneNumber = %s,
-            GoogleMapsEmbedURL = %s
+            GoogleMapsEmbedURL = %s,
+            IsFeatured = %s,
+            IsMonitored = %s
         WHERE VenueID = %s
     """,
     (
@@ -54,6 +56,8 @@ def update_venue(venue_id: UUID, venue: VenueInsert, connection, cursor) -> None
         str(venue.WebsiteURL) if venue.WebsiteURL else None,
         venue.PhoneNumber,
         str(venue.GoogleMapsEmbedURL),
+        venue.IsFeatured,
+        venue.IsMonitored,
         str(venue_id)
     ),
         connection=connection,
