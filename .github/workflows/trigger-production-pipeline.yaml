@@ -7,6 +7,9 @@ on:
 jobs:
   pipeline:
     uses: bandwidth-gig-guide/devops/.github/workflows/pipeline-production.yaml@main
+    permissions:
+      contents: write
+      packages: write
     secrets:
       PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
       DO_HOST: ${{ secrets.DO_HOST }}
