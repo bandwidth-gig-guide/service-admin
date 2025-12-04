@@ -6,6 +6,7 @@ on:
 
 jobs:
   pipeline:
+    name: Production Pipeline 
     uses: bandwidth-gig-guide/devops/.github/workflows/pipeline-production.yaml@main
     permissions:
       contents: write
