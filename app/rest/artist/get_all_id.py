@@ -84,4 +84,6 @@ def prepare(
     if filters:
         query += " WHERE " + " AND ".join(filters)
 
+    query += " ORDER BY Artist.Title;"
+
     return query, params
