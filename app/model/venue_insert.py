@@ -16,8 +16,8 @@ class VenueInsert(BaseModel):
     WebsiteURL: Optional[HttpUrl]
     PhoneNumber: str
     GoogleMapsEmbedURL: HttpUrl
-    IsFeatured: bool
-    IsMonitored: bool
+    IsFeatured: bool = False
+    IsMonitored: bool = False
     Images: List[ImageInsert] = []
     Socials: Optional[List[SocialInsert]] = []
     Types: Optional[List[str]] = []

@@ -13,7 +13,7 @@ class EventInsert(BaseModel):
     StartDateTime: datetime
     OriginalPostURL: HttpUrl
     TicketSaleURL: HttpUrl
-    IsFeatured: bool
+    IsFeatured: bool = False
     Images: Optional[List[ImageInsert]] = None
     Socials: Optional[List[Social]] = None
     Types: Optional[List[str]] = None

@@ -53,7 +53,7 @@ def post_artist(artist: ArtistInsert, connection, cursor) -> UUID:
             artist.Description,
             str(artist.SpotifyEmbedURL) if artist.SpotifyEmbedURL else None,
             str(artist.YoutubeEmbedURL) if artist.YoutubeEmbedURL else None,
-            artist.IsFeatured if artist.IsFeatured else False
+            artist.IsFeatured
         ),
         connection=connection,
         cursor=cursor

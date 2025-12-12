@@ -60,8 +60,8 @@ def post_venue(venue: VenueInsert, connection, cursor) -> UUID:
             str(venue.WebsiteURL) if venue.WebsiteURL else None,
             venue.PhoneNumber,
             str(venue.GoogleMapsEmbedURL),
-            venue.IsFeatured if venue.IsFeatured else False,
-            venue.IsMonitored if venue.IsMonitored else False
+            venue.IsFeatured,
+            venue.IsMonitored
         ),
         connection=connection,
         cursor=cursor

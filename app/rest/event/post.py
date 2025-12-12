@@ -55,7 +55,7 @@ def post_event(event: EventInsert, connection, cursor) -> UUID:
             event.StartDateTime,
             str(event.OriginalPostURL),
             str(event.TicketSaleURL),
-            event.IsFeatured if event.IsFeatured else False
+            event.IsFeatured
         ),       
         connection=connection,
         cursor=cursor
