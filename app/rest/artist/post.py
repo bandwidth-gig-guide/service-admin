@@ -40,7 +40,7 @@ def post_artist(artist: ArtistInsert, connection, cursor) -> UUID:
             SpotifyEmbedURL,
             YoutubeEmbedURL,
             IsFeatured,
-            IsResearched,
+            IsResearched
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         RETURNING ArtistID
