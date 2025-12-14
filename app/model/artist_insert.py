@@ -13,6 +13,7 @@ class ArtistInsert(BaseModel):
     SpotifyEmbedURL: Optional[HttpUrl] = None
     YoutubeEmbedURL: Optional[HttpUrl] = None
     IsFeatured: bool = False
+    IsResearched: bool = True
     Images: Optional[List[ImageInsert]] = None
     Socials: Optional[List[SocialInsert]] = None
     Types: Optional[List[str]] = None

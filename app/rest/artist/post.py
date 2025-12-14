@@ -39,9 +39,10 @@ def post_artist(artist: ArtistInsert, connection, cursor) -> UUID:
             Description,
             SpotifyEmbedURL,
             YoutubeEmbedURL,
-            IsFeatured
+            IsFeatured,
+            IsResearched,
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         RETURNING ArtistID
     """,
         (
@@ -53,7 +54,8 @@ def post_artist(artist: ArtistInsert, connection, cursor) -> UUID:
             artist.Description,
             str(artist.SpotifyEmbedURL) if artist.SpotifyEmbedURL else None,
             str(artist.YoutubeEmbedURL) if artist.YoutubeEmbedURL else None,
-            artist.IsFeatured
+            artist.IsFeatured,
+            artist.IsResearched
         ),
         connection=connection,
         cursor=cursor

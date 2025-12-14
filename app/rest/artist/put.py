@@ -39,7 +39,8 @@ def update_artist(artist_id: UUID, artist: ArtistInsert, connection, cursor):
             Description = %s,
             SpotifyEmbedURL = %s,
             YoutubeEmbedURL = %s,
-            IsFeatured = %s
+            IsFeatured = %s,
+            IsResearched = %s
         WHERE ArtistID = %s
     """,
         (
@@ -52,6 +53,7 @@ def update_artist(artist_id: UUID, artist: ArtistInsert, connection, cursor):
             str(artist.SpotifyEmbedURL) if artist.SpotifyEmbedURL else None,
             str(artist.YoutubeEmbedURL) if artist.YoutubeEmbedURL else None,
             artist.IsFeatured,
+            artist.IsResearched,
             str(artist_id)
         ),
         connection=connection,

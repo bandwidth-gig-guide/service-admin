@@ -22,6 +22,7 @@ def query():
             Artist.SpotifyEmbedUrl,
             Artist.YoutubeEmbedUrl,
             Artist.IsFeatured,
+            Artist.IsResearched,
 
             (
                 SELECT json_agg(json_build_object(
