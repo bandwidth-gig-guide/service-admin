@@ -1,7 +1,7 @@
 from typing import List
 from app.query.fetch_list import execute
 
-def get_all_id_and_title() -> List[dict]:
+def get_all_id_and_title_where_unresearched() -> List[dict]:
     response = execute(query())
     return [{
         "ArtistID": row[0], 
