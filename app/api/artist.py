@@ -8,6 +8,7 @@ from app.model.artist_insert import ArtistInsert
 from app.rest.artist.get import get_complete
 from app.rest.artist.get_all_id import get_all_id
 from app.rest.artist.get_all_id_and_title import get_all_id_and_title
+from app.rest.artist.get_all_id_and_title_where_unresearched import get_all_id_and_title_where_unresearched
 from app.rest.artist.post import post
 from app.rest.artist.put import put
 from app.rest.artist.delete import delete
@@ -15,6 +16,11 @@ from app.rest.artist.delete import delete
 
 artist = APIRouter()
 
+
+# GET IDs and Title | Unresearched
+@artist.get("/id-and-title/unresearched", response_model=list[dict])
+def get_all_id_and_title_where_unresearched_():
+    return get_all_id_and_title_where_unresearched()
 
 # GET IDs and Title
 @artist.get("/id-and-title", response_model=list[dict])
